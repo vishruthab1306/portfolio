@@ -8,27 +8,27 @@
     --font-mono: 'Fira Code', monospace;
 
     /* Theme - Dark Mode (Default) */
-    --bg-primary: #091413; /* Very dark forest jade */
-    --bg-secondary: #11231e; /* Sleek dark forest slate */
-    --bg-tertiary: #1a352d; /* Sophisticated deep forest sage */
+    --bg-primary: #181c14; /* Deep forest charcoal-black */
+    --bg-secondary: #23251e; /* Sleek warm olive-slate panels */
+    --bg-tertiary: #3c3d37; /* Warm stone grey */
     
-    --accent-primary: #408a71; /* Vibrant emerald seafoam */
-    --accent-primary-rgb: 64, 138, 113;
-    --accent-secondary: #b0e4cc; /* Bright mint green neon */
-    --accent-secondary-rgb: 176, 228, 204;
-    --accent-tertiary: #285a48; /* Sage green */
+    --accent-primary: #697565; /* Elegant sophisticated sage green */
+    --accent-primary-rgb: 105, 117, 101;
+    --accent-secondary: #ecdfcc; /* Glowing luxurious warm cream */
+    --accent-secondary-rgb: 236, 223, 204;
+    --accent-tertiary: #3c3d37; /* Warm charcoal */
     
-    --text-primary: #f0f7f4; /* Mint-white typography */
-    --text-secondary: #a3beb2; /* Muted sage green text */
-    --text-muted: #5f7d71; /* Darker muted sage green */
+    --text-primary: #ecdfcc; /* Luxurious cream-parchment text */
+    --text-secondary: #c8d1c5; /* Faint sage-grey text */
+    --text-muted: #697565; /* Sophisticated sage green */
     
-    --border-color: rgba(176, 228, 204, 0.08);
-    --card-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.5);
-    --glow-shadow: 0 0 25px rgba(64, 138, 113, 0.2);
+    --border-color: rgba(236, 223, 204, 0.08);
+    --card-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.55);
+    --glow-shadow: 0 0 25px rgba(105, 117, 101, 0.2);
     
     /* Glassmorphism Details */
-    --glass-bg: rgba(17, 35, 30, 0.65);
-    --glass-border: rgba(176, 228, 204, 0.06);
+    --glass-bg: rgba(35, 37, 30, 0.65);
+    --glass-border: rgba(236, 223, 204, 0.06);
     
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -38,25 +38,25 @@
 
 /* Theme - Light Mode */
 body.light-theme {
-    --bg-primary: #f2f7f5;
+    --bg-primary: #fcfbf9;
     --bg-secondary: #ffffff;
-    --bg-tertiary: #e1ede8;
+    --bg-tertiary: #f0ede8;
     
-    --accent-primary: #285a48;
-    --accent-primary-rgb: 40, 90, 72;
-    --accent-secondary: #408a71;
-    --accent-secondary-rgb: 64, 138, 113;
+    --accent-primary: #3c3d37;
+    --accent-primary-rgb: 60, 61, 55;
+    --accent-secondary: #697565;
+    --accent-secondary-rgb: 105, 117, 101;
     
-    --text-primary: #0c1f19;
-    --text-secondary: #2f4f45;
-    --text-muted: #57786e;
+    --text-primary: #181c14;
+    --text-secondary: #3c3d37;
+    --text-muted: #697565;
     
-    --border-color: rgba(40, 90, 72, 0.1);
-    --card-shadow: 0 8px 30px rgba(12, 31, 25, 0.05);
-    --glow-shadow: 0 0 15px rgba(40, 90, 72, 0.05);
+    --border-color: rgba(60, 61, 55, 0.1);
+    --card-shadow: 0 8px 30px rgba(24, 28, 20, 0.05);
+    --glow-shadow: 0 0 15px rgba(60, 61, 55, 0.05);
     
-    --glass-bg: rgba(255, 255, 255, 0.8);
-    --glass-border: rgba(40, 90, 72, 0.08);
+    --glass-bg: rgba(255, 255, 255, 0.82);
+    --glass-border: rgba(60, 61, 55, 0.08);
 }
 
 /* ==========================================================================

@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cliDatabase = {
         help: 'Available commands:\n  <span class="term-highlight">about</span>      - Short biography and student background\n  <span class="term-highlight">skills</span>     - Technical and product skills directory\n  <span class="term-highlight">projects</span>   - Core products designed\n  <span class="term-highlight">experience</span> - Internship contributions\n  <span class="term-highlight">contact</span>    - Connect credentials and info\n  <span class="term-highlight">clear</span>     - Wipe console history',
         about: '<b>Vishrutha Bangle</b>\n  - Role: 2nd Year Computer Science Engineering Student & Growth Intern\n  - Focus: Software engineering (Java, Python, MERN) & Product strategy\n  - Location: Bengaluru, India\n  - Goal: Securing product-focused and software development internships\n  - Philosophy: Blending core software principles with empathetic growth loops.',
-        skills: '<b>Technical & Product Stack</b>\n  - <span class="term-highlight">Languages:</span> Java, Python, C\n  - <span class="term-highlight">Web Dev:</span> HTML, CSS, JavaScript, MERN Stack (MongoDB, Express, React, Node.js)\n  - <span class="term-highlight">Tools:</span> Git, GitHub, Figma\n  - <span class="term-highlight">Product Competency:</span> Lifecycle analysis, Wireframing, MVP validation, funnels.',
+        skills: '<b>Core Competencies</b>\n  - <span class="term-highlight">Interactive Webpages:</span> MERN Stack, Simulated Sandboxes, UI Prototyping\n  - <span class="term-highlight">User-Centred Products:</span> Design Thinking, User Feedback Loops, Personas\n  - <span class="term-highlight">Product Management:</span> MVP Scoping, Figma Wireframing, Product Lifecycle\n  - <span class="term-highlight">Project Operations:</span> Timelines, Logistics, Budget Negotiation, Growth',
         projects: '<b>Core Developed Products</b>\n  - <span class="term-highlight">MediVault:</span> AI-summarizer & AES-256 cloud medical documents storage box.\n  - <span class="term-highlight">CampusMart:</span> Peer-to-peer campus student listings marketplace with direct negotiation chat.\n  <i>*Scroll down to the Projects section to use the live simulators!</i>',
         experience: '<b>Timelines & Roles</b>\n  - <span class="term-highlight">Growth Intern (04/2026 - Present):</span> Altiron One Global (Tourney24 / Campus Scene).\n    Drove sports club acquisition, on-ground events logistics, marketing, and referral networking.',
         contact: '<b>Connect Credentials</b>\n  - Email: vishruthab1306@gmail.com\n  - Location: Bengaluru, India\n  - GitHub: github.com/vishruthab1306\n  - LinkedIn: linkedin.com/in/vishrutha-bangle/'
@@ -887,20 +887,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       8. SKILL CARDS 3D PERSPECTIVE TILT
+       8. SKILL CARDS 3D PERSPECTIVE TILT & ACTIVE FILTERING
        ========================================================================== */
     const skillCards = document.querySelectorAll('.skill-card');
+    const skillFilterBtns = document.querySelectorAll('.skill-filter-btn');
     
+    // Skill Cards Active Filtering Logic
+    skillFilterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active classes
+            skillFilterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const targetGroup = btn.getAttribute('data-group');
+            
+            skillCards.forEach(card => {
+                const cardGroup = card.getAttribute('data-group');
+                
+                if (targetGroup === 'all' || cardGroup === targetGroup) {
+                    card.style.display = 'flex';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(10px) scale(0.95)';
+                    
+                    // Simple animation reflow
+                    setTimeout(() => {
+                        card.style.transition = 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }, 50);
+                } else {
+                    card.style.transition = 'all 0.3s ease';
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(-10px) scale(0.95)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+            
+            showToast(`Filtered competencies: ${btn.textContent}`);
+        });
+    });
+
+    // 3D Perspective Tilt Hover physics
     skillCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; // x coordinate inside card
-            const y = e.clientY - rect.top;  // y coordinate inside card
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top;  
             
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // Calculate tilt factors (Max 10 degrees)
             const rotateX = ((centerY - y) / centerY) * 10;
             const rotateY = ((x - centerX) / centerX) * 10;
             
@@ -909,6 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         card.addEventListener('mouseleave', () => {
             card.style.transform = '';
+            card.style.transition = 'transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)';
         });
     });
 
