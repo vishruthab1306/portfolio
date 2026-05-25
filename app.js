@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
         skills: '<b>Technical & Product Stack</b>\n  - <span class="term-highlight">Languages:</span> Java, Python, C\n  - <span class="term-highlight">Web Dev:</span> HTML, CSS, JavaScript, MERN Stack (MongoDB, Express, React, Node.js)\n  - <span class="term-highlight">Tools:</span> Git, GitHub, Figma\n  - <span class="term-highlight">Product Competency:</span> Lifecycle analysis, Wireframing, MVP validation, funnels.',
         projects: '<b>Core Developed Products</b>\n  - <span class="term-highlight">MediVault:</span> AI-summarizer & AES-256 cloud medical documents storage box.\n  - <span class="term-highlight">CampusMart:</span> Peer-to-peer campus student listings marketplace with direct negotiation chat.\n  <i>*Scroll down to the Projects section to use the live simulators!</i>',
         experience: '<b>Timelines & Roles</b>\n  - <span class="term-highlight">Growth Intern (04/2026 - Present):</span> Altiron One Global (Tourney24 / Campus Scene).\n    Drove sports club acquisition, on-ground events logistics, marketing, and referral networking.',
-        contact: '<b>Connect Credentials</b>\n  - Email: vishruthab1306@gmail.com\n  - Call: +91 8495970690\n  - Location: Bengaluru, India\n  - GitHub: github.com/vishruthab1306\n  - LinkedIn: linkedin.com/in/vishrutha-bangle/'
+        contact: '<b>Connect Credentials</b>\n  - Email: vishruthab1306@gmail.com\n  - Location: Bengaluru, India\n  - GitHub: github.com/vishruthab1306\n  - LinkedIn: linkedin.com/in/vishrutha-bangle/'
     };
 
     function appendTerminalLine(text, isOutput = true) {
