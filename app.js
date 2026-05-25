@@ -989,4 +989,109 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    /* ==========================================================================
+       9. INTERACTIVE STARDUST CURSOR TRAIL ENGINE
+       ========================================================================== */
+    const cursorCanvas = document.getElementById('cursor-canvas');
+    if (cursorCanvas) {
+        const cursorCtx = cursorCanvas.getContext('2d');
+        let trailParticles = [];
+
+        function resizeCursorCanvas() {
+            cursorCanvas.width = window.innerWidth;
+            cursorCanvas.height = window.innerHeight;
+        }
+        resizeCursorCanvas();
+        window.addEventListener('resize', resizeCursorCanvas);
+
+        class TrailParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 1.5;
+                this.vy = (Math.random() - 0.5) * 1.5 - 0.5; // Slight upward drift
+                this.size = Math.random() * 3 + 1;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.02 + 0.015;
+                
+                // Cosmic palette
+                const roll = Math.random();
+                if (roll > 0.6) {
+                    this.colorBase = 'rgba(255, 179, 198, '; // Soft Pink
+                } else if (roll > 0.2) {
+                    this.colorBase = 'rgba(255, 255, 255, '; // Glowing White
+                } else {
+                    this.colorBase = 'rgba(192, 132, 252, '; // Nebula Purple
+                }
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                cursorCtx.beginPath();
+                cursorCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                cursorCtx.fillStyle = this.colorBase + this.alpha + ')';
+                // Add soft glowing stardust
+                cursorCtx.shadowBlur = this.size > 2 ? 8 : 0;
+                cursorCtx.shadowColor = this.colorBase + '1)';
+                cursorCtx.fill();
+                cursorCtx.shadowBlur = 0;
+            }
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            // Spawn stardust particles
+            for (let i = 0; i < 2; i++) {
+                trailParticles.push(new TrailParticle(e.clientX, e.clientY));
+            }
+        });
+
+        function animateTrail() {
+            cursorCtx.clearRect(0, 0, cursorCanvas.width, cursorCanvas.height);
+            
+            for (let i = trailParticles.length - 1; i >= 0; i--) {
+                const p = trailParticles[i];
+                p.update();
+                if (p.alpha <= 0) {
+                    trailParticles.splice(i, 1);
+                } else {
+                    p.draw();
+                }
+            }
+            requestAnimationFrame(animateTrail);
+        }
+        animateTrail();
+    }
+
+    /* ==========================================================================
+       10. SCROLL REVEAL TIMELINE & SECTION ENTRANCE
+       ========================================================================== */
+    const revealElements = document.querySelectorAll('.about-info-card, .about-interactive-card, .experience-spotlight, .playground-nav, .medivault-dashboard, .campusmart-app, .skill-card, .interest-card, .contact-form-side');
+    
+    // Add "reveal" class to elements
+    revealElements.forEach(el => el.classList.add('reveal'));
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        // Fallback for older browsers
+        revealElements.forEach(el => el.classList.add('revealed'));
+    }
+
 });
