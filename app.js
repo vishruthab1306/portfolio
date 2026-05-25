@@ -1107,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auto-scroll to About section after 2.5 seconds if the user hasn't scrolled yet
+    // Auto-scroll to About section after 5 seconds if the user hasn't scrolled yet
     setTimeout(() => {
         if (window.scrollY < 20) {
             const aboutSection = document.getElementById('about');
@@ -1115,6 +1115,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 aboutSection.scrollIntoView({ behavior: 'smooth' });
             }
         }
-    }, 2500);
+    }, 5000);
 
 });
