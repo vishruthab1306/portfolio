@@ -486,6 +486,44 @@ body.light-theme .sun-icon {
     transform: translateY(-2px);
 }
 
+.scroll-down-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 48px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color var(--transition-fast);
+}
+
+.scroll-down-indicator:hover {
+    color: var(--accent-primary);
+}
+
+.bouncing-chevron {
+    font-size: 1.1rem;
+    animation: bounce 2s infinite;
+    color: var(--accent-primary);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-8px);
+    }
+    60% {
+        transform: translateY(-4px);
+    }
+}
+
 /* Hero Terminal Box */
 .hero-terminal-container {
     width: 100%;

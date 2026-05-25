@@ -1094,4 +1094,27 @@ document.addEventListener('DOMContentLoaded', () => {
         revealElements.forEach(el => el.classList.add('revealed'));
     }
 
+    /* ==========================================================================
+       11. AUTO-SCROLL & CLICK-SCROLL TO ABOUT SECTION
+       ========================================================================== */
+    const scrollDownBtn = document.getElementById('scroll-down-btn');
+    if (scrollDownBtn) {
+        scrollDownBtn.addEventListener('click', () => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    // Auto-scroll to About section after 2.5 seconds if the user hasn't scrolled yet
+    setTimeout(() => {
+        if (window.scrollY < 20) {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, 2500);
+
 });
