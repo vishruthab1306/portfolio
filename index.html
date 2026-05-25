@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vishrutha Bangle - Computer Science Engineering Student & Growth Intern at Tourney24. Explore interactive project simulators for MediVault and CampusMart.">
+    <title>Vishrutha Bangle | CS Engineer & Growth Intern Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+    
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation Header -->
+    <header id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo" id="nav-logo-btn">
+                <span class="logo-accent">&lt;</span>VB<span class="logo-accent"> /&gt;</span>
+            </a>
+            
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="#about" class="nav-link active">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#interests" class="nav-link">Interests</a>
+                <a href="#contact" class="nav-link contact-cta">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Switcher Button -->
+                <button id="theme-toggle" aria-label="Toggle dark/light theme" class="theme-btn">
+                    <i class="fas fa-moon moon-icon"></i>
+                    <i class="fas fa-sun sun-icon"></i>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-toggle" aria-label="Toggle menu" class="mobile-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero & CMD Console Section -->
+    <section id="hero" class="hero-section">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-bg-glow"></div>
+        <div class="section-container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span> 2nd Year CSE Student & Intern
+                </div>
+                <h1 class="hero-title">
+                    Hi, I'm <br><span class="gradient-text">Vishrutha Bangle</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Computer Science Engineering student at Bengaluru with a strong foundation in Java, Python, MERN stack, and product management concepts. Passionate about building highly interactive, user-centric MVPs.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#projects" class="btn btn-primary">Explore Simulators <i class="fas fa-arrow-right"></i></a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://github.com/vishruthab1306" target="_blank" rel="noopener" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vishrutha-bangle/" target="_blank" rel="noopener" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:vishruthab1306@gmail.com" aria-label="Send Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Hero Terminal / Interactive CLI -->
+            <div class="hero-terminal-container">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">vishrutha@portfolio: ~</span>
+                        <div class="terminal-action-buttons">
+                            <button class="terminal-action-btn" id="terminal-reset" title="Reset Console"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="terminal-body" id="terminal-console" role="log" aria-live="polite">
+                        <!-- CLI Welcome -->
+                        <div class="terminal-line system-msg">Initializing Vishrutha Shell v2.6.5...</div>
+                        <div class="terminal-line system-msg">Type <span class="term-highlight">help</span> or click the buttons below to interact.</div>
+                        <div class="terminal-line output-line">Guest connected. Location: Bengaluru, India</div>
+                        <div class="terminal-line" id="terminal-cursor-line">
+                            <span class="terminal-prompt">guest@vishrutha:~$</span>
+                            <span id="terminal-typed-input"></span><span class="terminal-cursor">|</span>
+                        </div>
+                    </div>
+                    <div class="terminal-footer">
+                        <div class="terminal-quick-tags">
+                            <button class="term-tag" data-cmd="about">about_me</button>
+                            <button class="term-tag" data-cmd="skills">languages_skills</button>
+                            <button class="term-tag" data-cmd="projects">core_projects</button>
+                            <button class="term-tag" data-cmd="experience">internships</button>
+                            <button class="term-tag" data-cmd="clear">clear_logs</button>
+                        </div>
+                        <form id="terminal-form" class="terminal-input-wrapper">
+                            <span class="terminal-prompt">guest@vishrutha:~$</span>
+                            <input type="text" id="terminal-input" autocomplete="off" placeholder="Type a command..." aria-label="Terminal command line">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Profile Stats Section -->
+    <section id="about" class="about-section scroll-offset">
+        <div class="section-container">
+            <h2 class="section-title text-center">About <span class="gradient-text">Vishrutha</span></h2>
+            <p class="section-tagline text-center">Software engineering student with a strong startup growth mindset.</p>
+            
+            <div class="about-grid">
+                <div class="about-info-card glass-card">
+                    <h3>The Profile</h3>
+                    <p class="about-description">
+                        I am currently a 2nd-year **Computer Science Engineering** student with a passion for software engineering, web development, and product management. I bridge the gap between technical engineering and operational growth. My experience as a Growth Intern at a sports-tech startup and leadership roles at college fests has equipped me with invaluable skills in MVP development, user research, data analysis, and cross-functional operations.
+                    </p>
+                    <div class="about-metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-number" data-target="2">2nd</span>
+                            <span class="metric-label">Year CSE</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number" data-target="2">2+</span>
+                            <span class="metric-label">Tech MVPs</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-number" data-target="3">3+</span>
+                            <span class="metric-label">Fest & Intern Roles</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-interactive-card glass-card">
+                    <h3>Focus & Drive</h3>
+                    <div class="focus-bar-wrapper">
+                        <div class="focus-item">
+                            <div class="focus-label"><span>Software Engineering (Java/Python/MERN)</span> <span>85%</span></div>
+                            <div class="focus-progress-bar"><div class="progress" style="width: 85%"></div></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-label"><span>Product Strategy & MVP Planning</span> <span>90%</span></div>
+                            <div class="focus-progress-bar"><div class="progress" style="width: 90%"></div></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-label"><span>Growth & Operations Coordination</span> <span>95%</span></div>
+                            <div class="focus-progress-bar"><div class="progress" style="width: 95%"></div></div>
+                        </div>
+                        <div class="focus-item">
+                            <div class="focus-label"><span>Design Thinking & Wireframing</span> <span>80%</span></div>
+                            <div class="focus-progress-bar"><div class="progress" style="width: 80%"></div></div>
+                        </div>
+                    </div>
+                    <div class="focus-footer">
+                        <div class="focus-badge"><i class="fas fa-graduation-cap"></i> CSE Student</div>
+                        <div class="focus-badge"><i class="fas fa-map-marker-alt"></i> Bengaluru, IN</div>
+                        <div class="focus-badge"><i class="fas fa-briefcase"></i> Open for Internships</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Timeline Section -->
+    <section id="experience" class="experience-section scroll-offset">
+        <div class="section-container">
+            <h2 class="section-title text-center">Internship & <span class="gradient-text">Contributions</span></h2>
+            <p class="section-tagline text-center">My active role and achievements in the startup ecosystem.</p>
+            
+            <div class="experience-spotlight glass-card">
+                <div class="spotlight-header">
+                    <div class="company-logo-box">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="spotlight-meta">
+                        <div class="role-group">
+                            <h3>Growth Intern</h3>
+                            <span class="spotlight-badge">Active Role</span>
+                        </div>
+                        <div class="company-group">
+                            <span class="company-name">Altiron One Global Private Limited (Tourney24 / Campus Scene)</span>
+                            <span class="spotlight-date"><i class="far fa-calendar-alt"></i> 04/2026 - Present</span>
+                        </div>
+                    </div>
+                    <div class="location-group">
+                        <span><i class="fas fa-map-marker-alt"></i> Bengaluru, India</span>
+                    </div>
+                </div>
+                
+                <div class="spotlight-grid">
+                    <div class="spotlight-bullets-pane">
+                        <h4><i class="fas fa-chart-line"></i> Operational Impact & Contributions</h4>
+                        <ul class="panel-bullets">
+                            <li><strong>User Acquisition:</strong> Drove user acquisition and organizer onboarding by reaching out to sports clubs, colleges, and event organizers across Bangalore.</li>
+                            <li><strong>End-to-End Planning:</strong> Contributed to the end-to-end planning of sports events, coordinating player venues and organizing participant handling schedules.</li>
+                            <li><strong>On-Ground Execution:</strong> Supported operational on-ground execution, including participant registrations, logistics management, and scheduling.</li>
+                            <li><strong>Digital Marketing:</strong> Formulated and executed dynamic marketing campaigns on Instagram, WhatsApp, and LinkedIn to promote tournaments and boost registration rates.</li>
+                            <li><strong>Content Creation:</strong> Assisted in creative content designing (stories, posters, reels) to significantly elevate brand visibility and user engagement levels.</li>
+                            <li><strong>Community Building:</strong> Built and managed high-activity student network circles (WhatsApp groups, college circles) to trigger referral channels.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="spotlight-metrics-pane">
+                        <h4><i class="fas fa-bullseye"></i> Key Milestones</h4>
+                        <div class="spotlight-metrics-grid">
+                            <div class="spotlight-metric">
+                                <span class="number">40+</span>
+                                <span class="label">Sports Clubs Onboarded</span>
+                            </div>
+                            <div class="spotlight-metric">
+                                <span class="number">15K+</span>
+                                <span class="label">Digital Reach</span>
+                            </div>
+                            <div class="spotlight-metric">
+                                <span class="number">10+</span>
+                                <span class="label">Communities Managed</span>
+                            </div>
+                            <div class="spotlight-metric">
+                                <span class="number">100%</span>
+                                <span class="label">On-Ground Support</span>
+                            </div>
+                        </div>
+                        <div class="spotlight-skills-tags">
+                            <span class="skill-badge">User Acquisition</span>
+                            <span class="skill-badge">Sports Tech Ops</span>
+                            <span class="skill-badge">Logistics</span>
+                            <span class="skill-badge">Digital Marketing</span>
+                            <span class="skill-badge">Community Building</span>
+                            <span class="skill-badge">Content Creation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section with Interactive Playgrounds -->
+    <section id="projects" class="projects-section scroll-offset">
+        <div class="section-container">
+            <h2 class="section-title text-center">Interactive <span class="gradient-text">Project Sandboxes</span></h2>
+            <p class="section-tagline text-center">Try out live-simulated versions of my web applications to understand their features.</p>
+            
+            <div class="playground-nav">
+                <button class="playground-toggle-btn active" id="btn-medivault-tab">
+                    <i class="fas fa-file-medical"></i> MediVault Simulator
+                </button>
+                <button class="playground-toggle-btn" id="btn-campusmart-tab">
+                    <i class="fas fa-store"></i> CampusMart Simulator
+                </button>
+            </div>
+            
+            <!-- MediVault Sandbox -->
+            <div class="playground-wrapper active" id="medivault-playground">
+                <div class="playground-intro">
+                    <div class="intro-text">
+                        <h3>MediVault <span class="badge-tech">AI & Storage</span></h3>
+                        <p>
+                            **MediVault** is a secure medical document storage platform. It enables patients to upload medical scans or prescriptions, which are processed using artificial intelligence to extract critical terms, flag anomalous data, and provide simple summaries. 
+                        </p>
+                    </div>
+                    <div class="intro-tags">
+                        <span class="p-tag"><i class="fas fa-lock"></i> AES-256 Storage</span>
+                        <span class="p-tag"><i class="fas fa-brain"></i> AI Summary Engine</span>
+                        <span class="p-tag"><i class="fas fa-columns"></i> Structured Dashboard</span>
+                    </div>
+                </div>
+                
+                <div class="medivault-dashboard glass-card">
+                    <!-- Left Sidebar (Medical Vault Folders) -->
+                    <div class="mv-sidebar">
+                        <div class="sidebar-header">
+                            <i class="fas fa-briefcase-medical"></i> <span>MediVault Storage</span>
+                        </div>
+                        <ul class="mv-folder-list">
+                            <li class="folder-item active"><i class="fas fa-folder-open"></i> General Reports</li>
+                            <li class="folder-item"><i class="fas fa-folder"></i> Cardiology</li>
+                            <li class="folder-item"><i class="fas fa-folder"></i> Dental Care</li>
+                            <li class="folder-item"><i class="fas fa-folder"></i> Prescriptions</li>
+                        </ul>
+                        <div class="mv-storage-usage">
+                            <div class="usage-label"><span>Storage Used</span> <span>12.4 MB</span></div>
+                            <div class="usage-bar"><div class="usage-fill" style="width: 15%"></div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Center Content Area (The AI Uploader & Summary Output) -->
+                    <div class="mv-main">
+                        <!-- Scanline Sweep Animation -->
+                        <div class="mv-scanline" id="mv-scanline"></div>
+                        
+                        <!-- Stage 1: Upload View -->
+                        <div class="mv-upload-stage" id="mv-stage-upload">
+                            <div class="upload-dropzone" id="mv-dropzone">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <h4>Drag & drop your medical document here</h4>
+                                <p class="upload-subtext">Supports PDF, PNG, JPG, or TXT (Max 10MB)</p>
+                                <span class="upload-or">OR</span>
+                                <div class="sample-doc-selector">
+                                    <p>Select a pre-configured sample document to test AI analysis:</p>
+                                    <div class="sample-buttons">
+                                        <button class="btn btn-sample" data-doc="report-1">Blood Test Report.pdf</button>
+                                        <button class="btn btn-sample" data-doc="report-2">Cardiology Scan.png</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 2: Processing View -->
+                        <div class="mv-processing-stage hidden" id="mv-stage-processing">
+                            <div class="processing-loader">
+                                <div class="pulse-ring"></div>
+                                <i class="fas fa-microchip process-icon"></i>
+                                <h4>AI Analysis In Progress...</h4>
+                                
+                                <!-- ECG Telemetry Drawing -->
+                                <div class="mv-ecg-container" id="mv-ecg-container">
+                                    <canvas id="mv-ecg-canvas" width="280" height="60"></canvas>
+                                </div>
+                                
+                                <div class="process-steps">
+                                    <div class="step-item" id="mv-step-1"><span class="step-dot"></span> Decrypting medical payload...</div>
+                                    <div class="step-item" id="mv-step-2"><span class="step-dot"></span> Extracting text via OCR engines...</div>
+                                    <div class="step-item" id="mv-step-3"><span class="step-dot"></span> Feeding tokens to Medical LLM...</div>
+                                    <div class="step-item" id="mv-step-4"><span class="step-dot"></span> Generating patient-friendly summary...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Stage 3: Summary Display -->
+                        <div class="mv-summary-stage hidden" id="mv-stage-summary">
+                            <div class="summary-header">
+                                <span class="doc-badge"><i class="fas fa-file-alt"></i> <span id="mv-doc-title">Blood Test Report.pdf</span></span>
+                                <button class="btn btn-reset-mv" id="btn-mv-upload-another"><i class="fas fa-redo"></i> Scan Another</button>
+                            </div>
+                            
+                            <div class="summary-grid">
+                                <div class="summary-card main-summary">
+                                    <h4><i class="fas fa-magic"></i> AI Patient Summary</h4>
+                                    <p id="mv-summary-text">Loading...</p>
+                                    <div class="critical-notes alert-box warning" id="mv-critical-notes-box">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <div>
+                                            <strong>Key Flag:</strong> <span id="mv-critical-text">Vitamin D levels are significantly low. Recommended consulting doctor about Vitamin D3 supplements.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="summary-card parameters-card">
+                                    <h4><i class="fas fa-chart-line"></i> Extracted Parameters</h4>
+                                    <div class="parameter-list" id="mv-param-list">
+                                        <!-- Parameter Rows -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CampusMart Sandbox -->
+            <div class="playground-wrapper hidden" id="campusmart-playground">
+                <div class="playground-intro">
+                    <div class="intro-text">
+                        <h3>CampusMart <span class="badge-tech">Peer-to-Peer Marketplace</span></h3>
+                        <p>
+                            **CampusMart** is a hyper-local campus marketplace web app. It bridges students directly so they can securely list, browse, search, and exchange products (textbooks, calculators, lab coats, and hostel utilities) directly inside their college blocks.
+                        </p>
+                    </div>
+                    <div class="intro-tags">
+                        <span class="p-tag"><i class="fas fa-search"></i> Block Filtering</span>
+                        <span class="p-tag"><i class="fas fa-comments"></i> In-App Negotiation</span>
+                        <span class="p-tag"><i class="fas fa-user-shield"></i> Verified Student Emails</span>
+                    </div>
+                </div>
+                
+                <div class="campusmart-app glass-card">
+                    <!-- Marketplace Catalog Pane -->
+                    <div class="cm-catalog-pane">
+                        <div class="cm-catalog-header">
+                            <div class="search-bar-wrapper">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" id="cm-search-input" placeholder="Search textbooks, tech, lab coats...">
+                            </div>
+                            <div class="cm-filters">
+                                <button class="cm-filter-btn active" data-category="all">All</button>
+                                <button class="cm-filter-btn" data-category="books">Books</button>
+                                <button class="cm-filter-btn" data-category="electronics">Electronics</button>
+                                <button class="cm-filter-btn" data-category="lab">Lab Gear</button>
+                            </div>
+                        </div>
+                        
+                        <div class="cm-product-grid" id="cm-products-container">
+                            <!-- Product Cards Dynamic Injection -->
+                        </div>
+                    </div>
+                    
+                    <!-- Chat Simulation Slider Sidebar -->
+                    <div class="cm-chat-sidebar" id="cm-chat-panel">
+                        <div class="chat-placeholder-state" id="cm-chat-placeholder">
+                            <i class="fas fa-comments-dollar chat-decor-icon"></i>
+                            <h4>Select a product card and click "Contact Seller" to start a negotiation simulation.</h4>
+                            <p>Test the interactive response model that handles item negotiation.</p>
+                        </div>
+                        
+                        <div class="chat-active-state hidden" id="cm-chat-active">
+                            <div class="chat-header">
+                                <div class="seller-profile">
+                                    <div class="seller-avatar" id="cm-chat-seller-avatar">S</div>
+                                    <div class="seller-meta">
+                                        <h4 id="cm-chat-seller-name">Suresh Kumar</h4>
+                                        <span class="active-badge"><span class="dot"></span> Online (Student Block B)</span>
+                                    </div>
+                                </div>
+                                <button class="chat-close" id="btn-close-chat" aria-label="Close Chat"><i class="fas fa-times"></i></button>
+                            </div>
+                            
+                            <!-- Product Snippet -->
+                            <div class="chat-product-banner">
+                                <div class="banner-img" id="cm-chat-prod-icon"><i class="fas fa-book"></i></div>
+                                <div class="banner-info">
+                                    <h5 id="cm-chat-prod-title">Scientific Calculator FX-991EX</h5>
+                                    <span id="cm-chat-prod-price">₹800</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Chat Dialogue Scroll Area -->
+                            <div class="chat-messages" id="cm-chat-messages-box">
+                                <!-- Chat Bubbles -->
+                            </div>
+                            
+                            <!-- Bidding / Instant Offer presets -->
+                            <div class="cm-bid-presets" id="cm-bid-presets">
+                                <button type="button" class="btn-bid" data-offer="50">Offer ₹50 Off</button>
+                                <button type="button" class="btn-bid" data-offer="100">Offer ₹100 Off</button>
+                                <button type="button" class="btn-bid" data-offer="meetup">Ask to Meet</button>
+                            </div>
+                            
+                            <!-- Message Composition Form -->
+                            <form id="cm-chat-form" class="chat-footer">
+                                <input type="text" id="cm-chat-input" placeholder="Type a message or offer..." autocomplete="off">
+                                <button type="submit" class="btn btn-chat-send" aria-label="Send Message"><i class="fas fa-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Grid Section -->
+    <section id="skills" class="skills-section scroll-offset">
+        <div class="section-container">
+            <h2 class="section-title text-center">My Technical <span class="gradient-text">Skills</span></h2>
+            <p class="section-tagline text-center">Technologies, developer tools, and product competencies I utilize.</p>
+            
+            <div class="skills-filters">
+                <button class="skill-filter-btn active" data-group="all">All</button>
+                <button class="skill-filter-btn" data-group="languages">Languages</button>
+                <button class="skill-filter-btn" data-group="web">Web Dev</button>
+                <button class="skill-filter-btn" data-group="tools">Tools</button>
+                <button class="skill-filter-btn" data-group="product">Core Concepts & Product</button>
+            </div>
+            
+            <div class="skills-grid" id="skills-container">
+                <!-- Languages -->
+                <div class="skill-card glass-card" data-group="languages">
+                    <div class="skill-icon-wrapper"><i class="fab fa-java java-clr"></i></div>
+                    <h4>Java</h4>
+                    <p class="skill-desc">Object-oriented programming, data structures, and strong systems architecture foundation.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="languages">
+                    <div class="skill-icon-wrapper"><i class="fab fa-python python-clr"></i></div>
+                    <h4>Python</h4>
+                    <p class="skill-desc">Scripting, automation, data engineering, and leveraging NLP / API integrations.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="languages">
+                    <div class="skill-icon-wrapper"><span class="c-icon">C</span></div>
+                    <h4>C Programming</h4>
+                    <p class="skill-desc">Procedural programming, memory optimization, pointers, and CPU-level computing.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                </div>
+
+                <!-- Web Dev -->
+                <div class="skill-card glass-card" data-group="web">
+                    <div class="skill-icon-wrapper"><i class="fab fa-react react-clr"></i></div>
+                    <h4>MERN Stack</h4>
+                    <p class="skill-desc">Creating complete full-stack web applications using MongoDB, Express, React, and Node.js.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="web">
+                    <div class="skill-icon-wrapper"><i class="fab fa-js-square js-clr"></i></div>
+                    <h4>JavaScript (ES6+)</h4>
+                    <p class="skill-desc">Dynamic DOM manipulations, asynchronous network fetch, and state event bindings.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="web">
+                    <div class="skill-icon-wrapper"><i class="fab fa-html5 html-clr"></i></div>
+                    <h4>HTML5 & CSS3</h4>
+                    <p class="skill-desc">Clean semantic code structures combined with flexible layout frameworks and glassmorphic designs.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                </div>
+
+                <!-- Tools -->
+                <div class="skill-card glass-card" data-group="tools">
+                    <div class="skill-icon-wrapper"><i class="fab fa-git-alt git-clr"></i></div>
+                    <h4>Git & GitHub</h4>
+                    <p class="skill-desc">Advanced source tracking, collaborative pull-requests, branch management, and merges.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="tools">
+                    <div class="skill-icon-wrapper"><i class="fab fa-figma figma-clr"></i></div>
+                    <h4>Figma</h4>
+                    <p class="skill-desc">Collaborating on design concepts, drawing high-fidelity layout wireframes, and vector exports.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                </div>
+
+                <!-- Core Concepts & Product -->
+                <div class="skill-card glass-card" data-group="product">
+                    <div class="skill-icon-wrapper"><i class="fas fa-sitemap concepts-clr"></i></div>
+                    <h4>Core CS Concepts</h4>
+                    <p class="skill-desc">Object-Oriented Programming (OOP), Data Structures & Algorithms, OS, and DBMS.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="product">
+                    <div class="skill-icon-wrapper"><i class="fas fa-rocket product-clr"></i></div>
+                    <h4>Product Lifecycle</h4>
+                    <p class="skill-desc">Basic understanding of product development cycle, feature mapping, and MVP scoping.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="product">
+                    <div class="skill-icon-wrapper"><i class="fas fa-users-cog product-clr"></i></div>
+                    <h4>Design Thinking</h4>
+                    <p class="skill-desc">User-centric design focus, gathering feedback loops, and empathetic user persona mappings.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+                </div>
+                <div class="skill-card glass-card" data-group="product">
+                    <div class="skill-icon-wrapper"><i class="fas fa-chart-pie analytics-clr"></i></div>
+                    <h4>Product Analytics</h4>
+                    <p class="skill-desc">Fundamental metrics research, cohort activity audits, and funnel optimization funnels.</p>
+                    <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                </div>
+            </div>
+            
+            <!-- Language Badges block -->
+            <div class="languages-block glass-card">
+                <h4><i class="fas fa-language"></i> Communication Languages</h4>
+                <div class="languages-grid">
+                    <div class="lang-row">
+                        <span class="lang-name">English</span>
+                        <div class="lang-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                        </div>
+                    </div>
+                    <div class="lang-row">
+                        <span class="lang-name">Kannada</span>
+                        <div class="lang-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                        </div>
+                    </div>
+                    <div class="lang-row">
+                        <span class="lang-name">Hindi</span>
+                        <div class="lang-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests Grid Section -->
+    <section id="interests" class="interests-section scroll-offset">
+        <div class="section-container">
+            <h2 class="section-title text-center">Personal <span class="gradient-text">Interests</span></h2>
+            <p class="section-tagline text-center">What I enjoy doing outside of coding and operations.</p>
+            
+            <div class="interests-grid">
+                <div class="interest-card glass-card">
+                    <div class="interest-bg trekking-bg"></div>
+                    <div class="interest-icon-box"><i class="fas fa-mountain"></i></div>
+                    <h4>Trekking</h4>
+                    <p>Conquering high peaks, exploring mountain trails, and embracing physical endurance runs across Karnataka's hills.</p>
+                </div>
+                <div class="interest-card glass-card">
+                    <div class="interest-bg outdoor-bg"></div>
+                    <div class="interest-icon-box"><i class="fas fa-compass"></i></div>
+                    <h4>Outdoor Exploration</h4>
+                    <p>Wandering into national parks, tracking wildlife, and understanding geological formations through active exploration.</p>
+                </div>
+                <div class="interest-card glass-card">
+                    <div class="interest-bg watersports-bg"></div>
+                    <div class="interest-icon-box"><i class="fas fa-water"></i></div>
+                    <h4>Water Sports</h4>
+                    <p>Exploring marine life and ocean waves through activities like scuba diving, snorkeling, and surfing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Contact Form & Log Panel Section -->
+    <section id="contact" class="contact-section scroll-offset">
+        <div class="section-container">
+            <h2 class="section-title text-center">Let's <span class="gradient-text">Connect</span></h2>
+            <p class="section-tagline text-center">Reach out for software, product-focused internships, or collaborations.</p>
+            
+            <div class="contact-grid">
+                <!-- Info Cards & Form -->
+                <div class="contact-form-side">
+                    <div class="contact-quick-cards">
+                        <div class="contact-info-card glass-card" id="btn-copy-email" title="Click to copy email">
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="info-details">
+                                <span class="info-label">Email Me</span>
+                                <span class="info-value">vishruthab1306@gmail.com</span>
+                            </div>
+                            <span class="copy-badge"><i class="far fa-copy"></i></span>
+                        </div>
+                        <a href="tel:8495970690" class="contact-info-card glass-card">
+                            <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div class="info-details">
+                                <span class="info-label">Call Me</span>
+                                <span class="info-value">+91 8495970690</span>
+                            </div>
+                            <span class="call-badge"><i class="fas fa-phone-volume"></i></span>
+                        </a>
+                        <div class="contact-info-card glass-card">
+                            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="info-details">
+                                <span class="info-label">Location</span>
+                                <span class="info-value">Bengaluru, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form id="contact-form" class="glass-card">
+                        <h3>Send a Message</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">Your Name</label>
+                                <input type="text" id="form-name" required placeholder="e.g. John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-email">Your Email</label>
+                                <input type="email" id="form-email" required placeholder="e.g. john@example.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-subject">Subject</label>
+                            <input type="text" id="form-subject" required placeholder="e.g. Project Collaboration Opportunity">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Message</label>
+                            <textarea id="form-message" rows="5" required placeholder="Type your message details here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit-form" id="btn-submit-contact">
+                            <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Connection Log Console -->
+                <div class="contact-logger-side">
+                    <div class="logger-window">
+                        <div class="logger-header">
+                            <span class="title"><i class="fas fa-terminal"></i> Connection Diagnostic Logger</span>
+                            <div class="status-indicator">
+                                <span class="status-pulse green"></span>
+                                <span class="status-txt">ONLINE</span>
+                            </div>
+                        </div>
+                        <div class="logger-body" id="contact-log-box" role="log" aria-live="polite">
+                            <div class="log-line text-muted">[2026-05-25 12:47] SYSTEM: Diagnostic logger standing by...</div>
+                            <div class="log-line text-muted">[2026-05-25 12:47] SYSTEM: Fill out the contact form on the left to test WebSocket handshake.</div>
+                        </div>
+                        <div class="logger-footer">
+                            <div class="terminal-stats">
+                                <span>SSL: ACTIVE</span>
+                                <span>PING: 14ms</span>
+                                <span>IP: 127.0.0.1</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-accent">&lt;</span>Vishrutha Bangle<span class="logo-accent"> /&gt;</span>
+                <p>2nd Year Computer Science Engineering student building user-centric technology products.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Shortcuts</h4>
+                <a href="#about">About</a>
+                <a href="#experience">Timeline</a>
+                <a href="#projects">Playgrounds</a>
+                <a href="#skills">Tech Skills</a>
+            </div>
+            
+            <div class="footer-socials">
+                <h4>Social links</h4>
+                <div class="social-icons">
+                    <a href="https://github.com/vishruthab1306" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vishrutha-bangle/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:vishruthab1306@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Vishrutha Bangle. Built with Vanilla Web Tech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" role="alert" aria-live="assertive"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
