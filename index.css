@@ -1470,7 +1470,8 @@ body.light-theme .sun-icon {
 }
 
 #cm-search-input:focus {
-    border-color: var(--accent-primary);
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 10px rgba(var(--accent-secondary-rgb), 0.15);
 }
 
 .cm-filters {
@@ -2225,8 +2226,8 @@ body.light-theme .sun-icon {
 }
 
 .form-group input:focus, .form-group textarea:focus {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 10px rgba(var(--accent-primary-rgb), 0.1);
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 10px rgba(var(--accent-secondary-rgb), 0.15);
 }
 
 .btn-submit-form {
