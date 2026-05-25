@@ -12,23 +12,23 @@
     --bg-secondary: #0d1b2a; /* Sleek galaxy-blue panels */
     --bg-tertiary: #1b263b; /* Space dust slate */
     
-    --accent-primary: #ffb3c6; /* Soft glowing baby pink */
-    --accent-primary-rgb: 255, 179, 198;
+    --accent-primary: #ffd6e0; /* Softer glowing baby pink */
+    --accent-primary-rgb: 255, 214, 224;
     --accent-secondary: #ffffff; /* Glowing pure starlight white */
     --accent-secondary-rgb: 255, 255, 255;
     --accent-tertiary: #c084fc; /* Cosmos nebula purple */
     
-    --text-primary: #fff0f3; /* Light light baby-pink tinted white */
+    --text-primary: #ffffff; /* Pure starlight white */
     --text-secondary: #e2e8f0; /* Starlight silver-white */
     --text-muted: #778da9; /* Muted starlight blue */
     
-    --border-color: rgba(255, 179, 198, 0.15);
+    --border-color: rgba(255, 214, 224, 0.15);
     --card-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.65);
-    --glow-shadow: 0 0 25px rgba(255, 179, 198, 0.25);
+    --glow-shadow: 0 0 25px rgba(255, 214, 224, 0.25);
     
     /* Glassmorphism Details */
     --glass-bg: rgba(13, 27, 42, 0.55);
-    --glass-border: rgba(255, 179, 198, 0.08);
+    --glass-border: rgba(255, 214, 224, 0.08);
     
     /* Transitions */
     --transition-fast: 0.2s ease;

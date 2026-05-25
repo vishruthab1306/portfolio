@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Palette matches baby pink, pure white, and nebula purple
             const roll = Math.random();
             if (roll > 0.6) {
-                this.colorBase = 'rgba(255, 179, 198, '; // Baby Pink
+                this.colorBase = 'rgba(255, 214, 224, '; // Softer Baby Pink
             } else if (roll > 0.2) {
                 this.colorBase = 'rgba(255, 255, 255, '; // Starlight White
             } else {
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(255, 179, 198, ${0.12 * (1 - dist/100)})`;
+                    ctx.strokeStyle = `rgba(255, 214, 224, ${0.12 * (1 - dist/100)})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(mouse.x, mouse.y);
-                    ctx.strokeStyle = `rgba(255, 179, 198, ${0.2 * (1 - dist/mouse.radius)})`;
+                    ctx.strokeStyle = `rgba(255, 214, 224, ${0.2 * (1 - dist/mouse.radius)})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alpha = (ecgCanvas.width - i) / 25;
             }
 
-            ecgCtx.strokeStyle = `rgba(255, 179, 198, ${alpha})`;
+            ecgCtx.strokeStyle = `rgba(255, 214, 224, ${alpha})`;
             ecgCtx.lineTo(i, drawY);
         }
         ecgCtx.stroke();
@@ -1017,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Cosmic palette
                 const roll = Math.random();
                 if (roll > 0.6) {
-                    this.colorBase = 'rgba(255, 179, 198, '; // Soft Pink
+                    this.colorBase = 'rgba(255, 214, 224, '; // Softer Pink
                 } else if (roll > 0.2) {
                     this.colorBase = 'rgba(255, 255, 255, '; // Glowing White
                 } else {
