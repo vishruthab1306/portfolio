@@ -79,46 +79,6 @@
                     <a href="mailto:vishruthab1306@gmail.com" aria-label="Send Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
-            
-            <!-- Hero Terminal / Interactive CLI -->
-            <div class="hero-terminal-container">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <span class="terminal-title">vishrutha@portfolio: ~</span>
-                        <div class="terminal-action-buttons">
-                            <button class="terminal-action-btn" id="terminal-reset" title="Reset Console"><i class="fas fa-sync-alt"></i></button>
-                        </div>
-                    </div>
-                    <div class="terminal-body" id="terminal-console" role="log" aria-live="polite">
-                        <!-- CLI Welcome -->
-                        <div class="terminal-line system-msg">Initializing Vishrutha Shell v2.6.5...</div>
-                        <div class="terminal-line system-msg">Type <span class="term-highlight">help</span> or click the buttons below to interact.</div>
-                        <div class="terminal-line output-line">Guest connected. Location: Bengaluru, India</div>
-                        <div class="terminal-line" id="terminal-cursor-line">
-                            <span class="terminal-prompt">guest@vishrutha:~$</span>
-                            <span id="terminal-typed-input"></span><span class="terminal-cursor">|</span>
-                        </div>
-                    </div>
-                    <div class="terminal-footer">
-                        <div class="terminal-quick-tags">
-                            <button class="term-tag" data-cmd="about">about_me</button>
-                            <button class="term-tag" data-cmd="skills">languages_skills</button>
-                            <button class="term-tag" data-cmd="projects">core_projects</button>
-                            <button class="term-tag" data-cmd="experience">internships</button>
-                            <button class="term-tag" data-cmd="clear">clear_logs</button>
-                        </div>
-                        <form id="terminal-form" class="terminal-input-wrapper">
-                            <span class="terminal-prompt">guest@vishrutha:~$</span>
-                            <input type="text" id="terminal-input" autocomplete="off" placeholder="Type a command..." aria-label="Terminal command line">
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -605,6 +565,7 @@
                                 <span class="info-value">vishruthab1306@gmail.com</span>
                             </div>
                             <span class="copy-badge"><i class="far fa-copy"></i></span>
+                        </div>
                         <div class="contact-info-card glass-card">
                             <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div class="info-details">
@@ -638,30 +599,6 @@
                             <span>Send Message</span> <i class="fas fa-paper-plane"></i>
                         </button>
                     </form>
-                </div>
-                
-                <!-- Connection Log Console -->
-                <div class="contact-logger-side">
-                    <div class="logger-window">
-                        <div class="logger-header">
-                            <span class="title"><i class="fas fa-terminal"></i> Connection Diagnostic Logger</span>
-                            <div class="status-indicator">
-                                <span class="status-pulse green"></span>
-                                <span class="status-txt">ONLINE</span>
-                            </div>
-                        </div>
-                        <div class="logger-body" id="contact-log-box" role="log" aria-live="polite">
-                            <div class="log-line text-muted">[2026-05-25 12:47] SYSTEM: Diagnostic logger standing by...</div>
-                            <div class="log-line text-muted">[2026-05-25 12:47] SYSTEM: Fill out the contact form on the left to test WebSocket handshake.</div>
-                        </div>
-                        <div class="logger-footer">
-                            <div class="terminal-stats">
-                                <span>SSL: ACTIVE</span>
-                                <span>PING: 14ms</span>
-                                <span>IP: 127.0.0.1</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

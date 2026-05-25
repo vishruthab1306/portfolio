@@ -139,19 +139,30 @@ document.addEventListener('DOMContentLoaded', () => {
         constructor() {
             this.x = Math.random() * canvas.width;
             this.y = Math.random() * canvas.height;
-            this.vx = (Math.random() - 0.5) * 0.4;
-            this.vy = (Math.random() - 0.5) * 0.4;
-            this.size = Math.random() * 2.5 + 1;
-            // Palette matches forest emerald and mint
-            this.color = Math.random() > 0.4 ? '#408a71' : '#b0e4cc';
+            this.vx = (Math.random() - 0.5) * 0.25;
+            this.vy = (Math.random() - 0.5) * 0.25;
+            this.size = Math.random() * 2 + 0.5;
+            this.alpha = Math.random();
+            this.twinkleSpeed = Math.random() * 0.008 + 0.004;
+            this.twinkleDir = Math.random() > 0.5 ? 1 : -1;
+            
+            // Palette matches baby pink, pure white, and nebula purple
+            const roll = Math.random();
+            if (roll > 0.6) {
+                this.colorBase = 'rgba(255, 179, 198, '; // Baby Pink
+            } else if (roll > 0.2) {
+                this.colorBase = 'rgba(255, 255, 255, '; // Starlight White
+            } else {
+                this.colorBase = 'rgba(192, 132, 252, '; // Nebula Purple
+            }
         }
 
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = this.color;
-            ctx.shadowBlur = 6;
-            ctx.shadowColor = this.color;
+            ctx.fillStyle = this.colorBase + this.alpha + ')';
+            ctx.shadowBlur = this.size > 1.5 ? 5 : 0;
+            ctx.shadowColor = this.colorBase + '1)';
             ctx.fill();
             ctx.shadowBlur = 0; // reset shadow
         }
@@ -159,6 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
         update() {
             this.x += this.vx;
             this.y += this.vy;
+
+            // Twinkle pulsation
+            this.alpha += this.twinkleSpeed * this.twinkleDir;
+            if (this.alpha <= 0.1) {
+                this.alpha = 0.1;
+                this.twinkleDir = 1;
+            } else if (this.alpha >= 1) {
+                this.alpha = 1;
+                this.twinkleDir = -1;
+            }
 
             // Bounce on boundaries
             if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
@@ -172,8 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (dist < mouse.radius) {
                     let force = (mouse.radius - dist) / mouse.radius;
                     let angle = Math.atan2(dy, dx);
-                    this.x += Math.cos(angle) * force * 1.5;
-                    this.y += Math.sin(angle) * force * 1.5;
+                    this.x += Math.cos(angle) * force * 1.2;
+                    this.y += Math.sin(angle) * force * 1.2;
                 }
             }
         }
@@ -195,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             p.draw();
         });
 
-        // Draw connections
+        // Draw connections (Faint glowing pink constellations)
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 let dx = particles[i].x - particles[j].x;
@@ -206,8 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    // Sleek faint green web lines
-                    ctx.strokeStyle = `rgba(176, 228, 204, ${0.15 * (1 - dist/100)})`;
+                    ctx.strokeStyle = `rgba(255, 179, 198, ${0.12 * (1 - dist/100)})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -224,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(mouse.x, mouse.y);
-                    ctx.strokeStyle = `rgba(64, 138, 113, ${0.25 * (1 - dist/mouse.radius)})`;
+                    ctx.strokeStyle = `rgba(255, 179, 198, ${0.2 * (1 - dist/mouse.radius)})`;
                     ctx.lineWidth = 0.8;
                     ctx.stroke();
                 }
@@ -257,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function appendTerminalLine(text, isOutput = true) {
+        if (!terminalConsole) return;
         const line = document.createElement('div');
         line.className = `terminal-line ${isOutput ? 'output-line' : ''}`;
         line.innerHTML = text;
@@ -273,8 +294,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cleanCmd === '') return;
 
         if (cleanCmd === 'clear') {
-            const lines = terminalConsole.querySelectorAll('.terminal-line:not(#terminal-cursor-line)');
-            lines.forEach(l => l.remove());
+            if (terminalConsole) {
+                const lines = terminalConsole.querySelectorAll('.terminal-line:not(#terminal-cursor-line)');
+                lines.forEach(l => l.remove());
+            }
             appendTerminalLine('System logs reset.', true);
             return;
         }
@@ -286,41 +309,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    terminalForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const value = terminalInput.value;
-        processCommand(value);
-        terminalInput.value = '';
-    });
-
-    terminalResetBtn.addEventListener('click', () => {
-        const lines = terminalConsole.querySelectorAll('.terminal-line:not(#terminal-cursor-line)');
-        lines.forEach(l => l.remove());
-        appendTerminalLine('System reboot completed. Shell is ready.', true);
-    });
-
-    termTags.forEach(tag => {
-        tag.addEventListener('click', () => {
-            const cmd = tag.getAttribute('data-cmd');
+    if (terminalForm && terminalInput) {
+        terminalForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const value = terminalInput.value;
+            processCommand(value);
             terminalInput.value = '';
-            let charIndex = 0;
-            tag.disabled = true;
-            
-            const typeTimer = setInterval(() => {
-                if (charIndex < cmd.length) {
-                    terminalInput.value += cmd.charAt(charIndex);
-                    charIndex++;
-                } else {
-                    clearInterval(typeTimer);
-                    setTimeout(() => {
-                        processCommand(cmd);
-                        terminalInput.value = '';
-                        tag.disabled = false;
-                    }, 150);
-                }
-            }, 50);
         });
-    });
+    }
+
+    if (terminalResetBtn && terminalConsole) {
+        terminalResetBtn.addEventListener('click', () => {
+            const lines = terminalConsole.querySelectorAll('.terminal-line:not(#terminal-cursor-line)');
+            lines.forEach(l => l.remove());
+            appendTerminalLine('System reboot completed. Shell is ready.', true);
+        });
+    }
+
+    if (termTags && terminalInput) {
+        termTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                const cmd = tag.getAttribute('data-cmd');
+                terminalInput.value = '';
+                let charIndex = 0;
+                tag.disabled = true;
+                
+                const typeTimer = setInterval(() => {
+                    if (charIndex < cmd.length) {
+                        terminalInput.value += cmd.charAt(charIndex);
+                        charIndex++;
+                    } else {
+                        clearInterval(typeTimer);
+                        setTimeout(() => {
+                            processCommand(cmd);
+                            terminalInput.value = '';
+                            tag.disabled = false;
+                        }, 150);
+                    }
+                }, 50);
+            });
+        });
+    }
 
     /* ==========================================================================
        5. MEDIVAULT SIMULATOR ENGINE (AI CLINICAL SUMMARY & ECG)
@@ -414,11 +443,11 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.stroke();
         }
 
-        // draw green cardiac telemetry sweep line
-        ecgCtx.strokeStyle = '#b0e4cc';
+        // draw pink cardiac telemetry sweep line
+        ecgCtx.strokeStyle = '#ffb3c6';
         ecgCtx.lineWidth = 1.8;
         ecgCtx.shadowBlur = 6;
-        ecgCtx.shadowColor = '#b0e4cc';
+        ecgCtx.shadowColor = '#ffb3c6';
         ecgCtx.beginPath();
 
         const midY = ecgCanvas.height / 2;
@@ -454,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alpha = (ecgCanvas.width - i) / 25;
             }
 
-            ecgCtx.strokeStyle = `rgba(176, 228, 204, ${alpha})`;
+            ecgCtx.strokeStyle = `rgba(255, 179, 198, ${alpha})`;
             ecgCtx.lineTo(i, drawY);
         }
         ecgCtx.stroke();
@@ -806,6 +835,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCopyEmail = document.getElementById('btn-copy-email');
 
     function appendLog(text, type = 'default') {
+        if (!contactLogBox) return;
         const date = new Date();
         const timeStr = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         const line = document.createElement('div');
@@ -815,19 +845,24 @@ document.addEventListener('DOMContentLoaded', () => {
         contactLogBox.scrollTop = contactLogBox.scrollHeight;
     }
 
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('form-name').value;
-        const email = document.getElementById('form-email').value;
-        const subject = document.getElementById('form-subject').value;
-        
-        btnSubmitContact.disabled = true;
-        btnSubmitContact.innerHTML = '<span>Transmitting...</span> <i class="fas fa-spinner fa-spin"></i>';
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('form-name').value;
+            const email = document.getElementById('form-email').value;
+            const subject = document.getElementById('form-subject').value;
+            
+            if (btnSubmitContact) {
+                btnSubmitContact.disabled = true;
+                btnSubmitContact.innerHTML = '<span>Transmitting...</span> <i class="fas fa-spinner fa-spin"></i>';
+            }
 
-        contactLogBox.innerHTML = '';
+            if (contactLogBox) {
+                contactLogBox.innerHTML = '';
+            }
 
-        appendLog('SYSTEM: Initializing mail submission client...', 'info');
+            appendLog('SYSTEM: Initializing mail submission client...', 'info');
 
         setTimeout(() => {
             appendLog(`SYSTEM: Resolving destination MX records for "vishruthab1306@gmail.com"`, 'info');
@@ -867,24 +902,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 600);
             }, 700);
         }, 500);
-    });
-
-    btnCopyEmail.addEventListener('click', () => {
-        const emailAddress = 'vishruthab1306@gmail.com';
-        
-        navigator.clipboard.writeText(emailAddress).then(() => {
-            showToast('Email address copied to clipboard!');
-            appendLog(`SYSTEM: Copied target address "${emailAddress}" to local clipboard successfully.`, 'success');
-        }).catch(err => {
-            const el = document.createElement('textarea');
-            el.value = emailAddress;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            showToast('Email address copied!');
         });
-    });
+    }
+
+    if (btnCopyEmail) {
+        btnCopyEmail.addEventListener('click', () => {
+            const emailAddress = 'vishruthab1306@gmail.com';
+            
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                showToast('Email address copied to clipboard!');
+                appendLog(`SYSTEM: Copied target address "${emailAddress}" to local clipboard successfully.`, 'success');
+            }).catch(err => {
+                const el = document.createElement('textarea');
+                el.value = emailAddress;
+                document.body.appendChild(el);
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                showToast('Email address copied!');
+            });
+        });
+    }
 
     /* ==========================================================================
        8. SKILL CARDS 3D PERSPECTIVE TILT & ACTIVE FILTERING

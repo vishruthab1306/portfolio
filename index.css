@@ -7,28 +7,28 @@
     --font-body: 'Inter', sans-serif;
     --font-mono: 'Fira Code', monospace;
 
-    /* Theme - Dark Mode (Default) */
-    --bg-primary: #181c14; /* Deep forest charcoal-black */
-    --bg-secondary: #23251e; /* Sleek warm olive-slate panels */
-    --bg-tertiary: #3c3d37; /* Warm stone grey */
+    /* Theme - Dark Mode (Default) - Galaxy & Pink Starlight */
+    --bg-primary: #050b14; /* Deep space black-blue */
+    --bg-secondary: #0d1b2a; /* Sleek galaxy-blue panels */
+    --bg-tertiary: #1b263b; /* Space dust slate */
     
-    --accent-primary: #697565; /* Elegant sophisticated sage green */
-    --accent-primary-rgb: 105, 117, 101;
-    --accent-secondary: #ecdfcc; /* Glowing luxurious warm cream */
-    --accent-secondary-rgb: 236, 223, 204;
-    --accent-tertiary: #3c3d37; /* Warm charcoal */
+    --accent-primary: #ffb3c6; /* Soft glowing baby pink */
+    --accent-primary-rgb: 255, 179, 198;
+    --accent-secondary: #ffffff; /* Glowing pure starlight white */
+    --accent-secondary-rgb: 255, 255, 255;
+    --accent-tertiary: #c084fc; /* Cosmos nebula purple */
     
-    --text-primary: #ecdfcc; /* Luxurious cream-parchment text */
-    --text-secondary: #c8d1c5; /* Faint sage-grey text */
-    --text-muted: #697565; /* Sophisticated sage green */
+    --text-primary: #fff0f3; /* Light light baby-pink tinted white */
+    --text-secondary: #e2e8f0; /* Starlight silver-white */
+    --text-muted: #778da9; /* Muted starlight blue */
     
-    --border-color: rgba(236, 223, 204, 0.08);
-    --card-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.55);
-    --glow-shadow: 0 0 25px rgba(105, 117, 101, 0.2);
+    --border-color: rgba(255, 179, 198, 0.15);
+    --card-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.65);
+    --glow-shadow: 0 0 25px rgba(255, 179, 198, 0.25);
     
     /* Glassmorphism Details */
-    --glass-bg: rgba(35, 37, 30, 0.65);
-    --glass-border: rgba(236, 223, 204, 0.06);
+    --glass-bg: rgba(13, 27, 42, 0.55);
+    --glass-border: rgba(255, 179, 198, 0.08);
     
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -38,25 +38,25 @@
 
 /* Theme - Light Mode */
 body.light-theme {
-    --bg-primary: #fcfbf9;
+    --bg-primary: #fff5f7;
     --bg-secondary: #ffffff;
-    --bg-tertiary: #f0ede8;
+    --bg-tertiary: #ffe5ec;
     
-    --accent-primary: #3c3d37;
-    --accent-primary-rgb: 60, 61, 55;
-    --accent-secondary: #697565;
-    --accent-secondary-rgb: 105, 117, 101;
+    --accent-primary: #fb6f92;
+    --accent-primary-rgb: 251, 111, 146;
+    --accent-secondary: #3d5a80;
+    --accent-secondary-rgb: 61, 90, 128;
     
-    --text-primary: #181c14;
-    --text-secondary: #3c3d37;
-    --text-muted: #697565;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
     
-    --border-color: rgba(60, 61, 55, 0.1);
-    --card-shadow: 0 8px 30px rgba(24, 28, 20, 0.05);
-    --glow-shadow: 0 0 15px rgba(60, 61, 55, 0.05);
+    --border-color: rgba(251, 111, 146, 0.12);
+    --card-shadow: 0 8px 30px rgba(251, 111, 146, 0.04);
+    --glow-shadow: 0 0 15px rgba(251, 111, 146, 0.04);
     
     --glass-bg: rgba(255, 255, 255, 0.82);
-    --glass-border: rgba(60, 61, 55, 0.08);
+    --glass-border: rgba(251, 111, 146, 0.06);
 }
 
 /* ==========================================================================
@@ -409,10 +409,21 @@ body.light-theme .sun-icon {
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 48px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 32px;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .hero-badge {
@@ -450,13 +461,16 @@ body.light-theme .sun-icon {
     font-size: 1.15rem;
     color: var(--text-secondary);
     margin-bottom: 36px;
-    max-width: 540px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-ctas {
     display: flex;
     gap: 16px;
     margin-bottom: 40px;
+    justify-content: center;
 }
 
 .hero-socials {
@@ -464,6 +478,7 @@ body.light-theme .sun-icon {
     gap: 20px;
     font-size: 1.3rem;
     color: var(--text-secondary);
+    justify-content: center;
 }
 
 .hero-socials a:hover {
@@ -1991,7 +2006,9 @@ body.light-theme .sun-icon {
    ========================================================================== */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin: 0 auto;
     gap: 32px;
 }
 
