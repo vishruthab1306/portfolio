@@ -482,43 +482,6 @@
                     <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
                 </div>
             </div>
-            
-            <!-- Language Badges block -->
-            <div class="languages-block glass-card">
-                <h4><i class="fas fa-language"></i> Communication Languages</h4>
-                <div class="languages-grid">
-                    <div class="lang-row">
-                        <span class="lang-name">English</span>
-                        <div class="lang-dots">
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                        </div>
-                    </div>
-                    <div class="lang-row">
-                        <span class="lang-name">Kannada</span>
-                        <div class="lang-dots">
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                        </div>
-                    </div>
-                    <div class="lang-row">
-                        <span class="lang-name">Hindi</span>
-                        <div class="lang-dots">
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot active"></span>
-                            <span class="dot"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -551,15 +514,17 @@
         </div>
     </section>
 
-    <!-- Interactive Contact Form & Log Panel Section -->
+    <!-- Interactive Contact Form & Social Links Section -->
     <section id="contact" class="contact-section scroll-offset">
         <div class="section-container">
-            <h2 class="section-title text-center">Let's <span class="gradient-text">Connect</span></h2>
-            <p class="section-tagline text-center">Reach out for software, product-focused internships, or collaborations.</p>
-            
             <div class="contact-grid">
-                <!-- Info Cards & Form -->
-                <div class="contact-form-side">
+                <!-- Left Column: Let's Connect & Form -->
+                <div class="contact-left-side">
+                    <div class="contact-headers">
+                        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+                        <p class="section-tagline">Reach out for software, product-focused internships, or collaborations.</p>
+                    </div>
+                    
                     <div class="contact-quick-cards">
                         <div class="contact-info-card glass-card" id="btn-copy-email" title="Click to copy email">
                             <div class="info-icon"><i class="fas fa-envelope"></i></div>
@@ -603,39 +568,35 @@
                         </button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-brand">
-                <span class="logo-accent">&lt;</span>Vishrutha Bangle<span class="logo-accent"> /&gt;</span>
-                <p>2nd Year Computer Science Engineering student building user-centric technology products.</p>
-            </div>
-            
-            <div class="footer-links">
-                <h4>Shortcuts</h4>
-                <a href="#about">About</a>
-                <a href="#experience">Timeline</a>
-                <a href="#projects">Playgrounds</a>
-                <a href="#skills">Tech Skills</a>
-            </div>
-            
-            <div class="footer-socials">
-                <h4>Social links</h4>
-                <div class="social-icons">
-                    <a href="https://github.com/vishruthab1306" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/vishrutha-bangle/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="mailto:vishruthab1306@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                
+                <!-- Right Column: Biography, Social Links & Copyright -->
+                <div class="contact-right-side">
+                    <div class="contact-bio-card glass-card">
+                        <div class="bio-header">
+                            <span class="logo-accent">&lt;</span><span class="bio-name">Vishrutha Bangle</span><span class="logo-accent"> /&gt;</span>
+                        </div>
+                        <p class="bio-text">
+                            2nd Year Computer Science Engineering student building user-centric technology products and interactive MVPs. Passionate about software engineering, product management, and growth operations.
+                        </p>
+                        
+                        <div class="social-links-block">
+                            <h4>Social Links</h4>
+                            <div class="social-icons-row">
+                                <a href="https://github.com/vishruthab1306" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/vishrutha-bangle/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="mailto:vishruthab1306@gmail.com" aria-label="Email" class="social-btn"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="copyright-block">
+                            <p>&copy; 2026 Vishrutha Bangle. Built with Vanilla Web Tech.</p>
+                            <p class="all-rights">All rights reserved.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Vishrutha Bangle. Built with Vanilla Web Tech. All rights reserved.</p>
-        </div>
-    </footer>
+    </section>
 
     <!-- Toast Notification Container -->
     <div id="toast-container" role="alert" aria-live="assertive"></div>

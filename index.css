@@ -2006,16 +2006,107 @@ body.light-theme .sun-icon {
    ========================================================================== */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    max-width: 720px;
-    margin: 0 auto;
-    gap: 32px;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: flex-start;
 }
 
-.contact-form-side {
+.contact-left-side {
     display: flex;
     flex-direction: column;
     gap: 24px;
+}
+
+.contact-headers {
+    margin-bottom: 8px;
+}
+
+.contact-headers .section-title {
+    text-align: left;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+}
+
+.contact-headers .section-tagline {
+    text-align: left;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.contact-right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 100px;
+}
+
+.contact-bio-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contact-bio-card .bio-header {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.contact-bio-card .bio-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.social-links-block h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.social-icons-row {
+    display: flex;
+    gap: 16px;
+}
+
+.social-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+    background: var(--accent-primary);
+    color: #050b14;
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255, 214, 224, 0.4);
+}
+
+.copyright-block {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+.copyright-block .all-rights {
+    margin-top: 4px;
+    font-size: 0.75rem;
 }
 
 .contact-quick-cards {
@@ -2463,6 +2554,10 @@ body.light-theme footer {
     
     .interests-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contact-right-side {
+        position: static;
     }
 }
 
